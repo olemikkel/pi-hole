@@ -867,8 +867,8 @@ use4andor6() {
     if [[ "${useIPv4}" ]]; then
         # Run our function to get the information we need
         find_IPv4_information
-        getStaticIPv4Settings
-        setStaticIPv4
+        #getStaticIPv4Settings
+        #setStaticIPv4
     fi
     # If IPv6 is to be used,
     if [[ "${useIPv6}" ]]; then
