@@ -2316,7 +2316,7 @@ FTLinstall() {
 
     # Determine which version of FTL to download
     if [[ "${ftlBranch}" == "master" ]];then
-        url="https://github.com/olemikkel/ftl/releases/latest/download"
+        url="https://github.com/pi-hole/ftl/releases/latest/download"
     else
         url="https://ftl.pi-hole.net/${ftlBranch}"
     fi
@@ -2529,7 +2529,7 @@ FTLcheckUpdate() {
             FTLversion=$(/usr/bin/pihole-FTL tag)
             local FTLlatesttag
 
-            if ! FTLlatesttag=$(curl -sI https://github.com/olemikkel/FTL/releases/latest | grep --color=never -i Location | awk -F / '{print $NF}' | tr -d '[:cntrl:]'); then
+            if ! FTLlatesttag=$(curl -sI https://github.com/pi-hole/ftl/releases/latest | grep --color=never -i Location | awk -F / '{print $NF}' | tr -d '[:cntrl:]'); then
                 # There was an issue while retrieving the latest version
                 printf "  %b Failed to retrieve latest FTL release metadata" "${CROSS}"
                 return 3
@@ -2540,7 +2540,7 @@ FTLcheckUpdate() {
             else
                 printf "  %b Latest FTL Binary already installed (%s). Confirming Checksum...\\n" "${INFO}" "${FTLlatesttag}"
 
-                remoteSha1=$(curl -sSL --fail "https://github.com/olemikkel/FTL/releases/download/${FTLversion%$'\r'}/${binary}.sha1" | cut -d ' ' -f 1)
+                remoteSha1=$(curl -sSL --fail "https://github.com/pi-hole/ftl/releases/download/${FTLversion%$'\r'}/${binary}.sha1" | cut -d ' ' -f 1)
                 localSha1=$(sha1sum "$(which pihole-FTL)" | cut -d ' ' -f 1)
 
                 if [[ "${remoteSha1}" != "${localSha1}" ]]; then
