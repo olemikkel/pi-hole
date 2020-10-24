@@ -65,6 +65,7 @@ if ($serverName === "pi.hole"
             <title>● $serverName</title>
             <link rel='stylesheet' href='pihole/blockingpage.css'>
             <link rel='shortcut icon' href='admin/img/favicons/favicon.ico' type='image/x-icon'>
+            <meta http-equiv='refresh' content='0; url=/admin'>
         </head>
         <body id='splashpage'>
             <img src='admin/img/logo.svg' alt='Pi-hole logo' width='256' height='377'>
