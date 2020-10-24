@@ -56,9 +56,9 @@ coltable=/opt/pihole/COL_TABLE
 webroot="/var/www/html"
 
 # We store several other directories and
-webInterfaceGitUrl="https://github.com/pi-hole/AdminLTE.git"
+webInterfaceGitUrl="https://github.com/olemikkel/AdminLTE.git"
 webInterfaceDir="${webroot}/admin"
-piholeGitUrl="https://github.com/pi-hole/pi-hole.git"
+piholeGitUrl="https://github.com/olemikkel/pi-hole.git"
 PI_HOLE_LOCAL_REPO="/etc/.pihole"
 # These are the names of pi-holes files, stored in an array
 PI_HOLE_FILES=(chronometer list piholeDebug piholeLogFlush setupLCD update version gravity uninstall webpage)
@@ -757,7 +757,7 @@ chooseInterface() {
 
 # This lets us prefer ULA addresses over GUA
 # This caused problems for some users when their ISP changed their IPv6 addresses
-# See https://github.com/pi-hole/pi-hole/issues/1473#issuecomment-301745953
+# See https://github.com/olemikkel/pi-hole/issues/1473#issuecomment-301745953
 testIPv6() {
     # first will contain fda2 (ULA)
     printf -v first "%s" "${1%%:*}"
@@ -1981,7 +1981,7 @@ accountForRefactor() {
     sed -i 's/piholeDNS1/PIHOLE_DNS_1/g' "${setupVars}"
     sed -i 's/piholeDNS2/PIHOLE_DNS_2/g' "${setupVars}"
     sed -i 's/^INSTALL_WEB=/INSTALL_WEB_INTERFACE=/' "${setupVars}"
-    # Add 'INSTALL_WEB_SERVER', if its not been applied already: https://github.com/pi-hole/pi-hole/pull/2115
+    # Add 'INSTALL_WEB_SERVER', if its not been applied already: https://github.com/olemikkel/pi-hole/pull/2115
     if ! grep -q '^INSTALL_WEB_SERVER=' ${setupVars}; then
         local webserver_installed=false
         if grep -q '^INSTALL_WEB_INTERFACE=true' ${setupVars}; then
@@ -2316,7 +2316,7 @@ FTLinstall() {
 
     # Determine which version of FTL to download
     if [[ "${ftlBranch}" == "master" ]];then
-        url="https://github.com/pi-hole/ftl/releases/latest/download"
+        url="https://github.com/olemikkel/ftl/releases/latest/download"
     else
         url="https://ftl.pi-hole.net/${ftlBranch}"
     fi
@@ -2442,7 +2442,7 @@ get_binary_name() {
         # Special case: This is a 32 bit OS, installed on a 64 bit machine
         # -> change machine architecture to download the 32 bit executable
         # We only check this for Debian-based systems as this has been an issue
-        # in the past (see https://github.com/pi-hole/pi-hole/pull/2004)
+        # in the past (see https://github.com/olemikkel/pi-hole/pull/2004)
         if [[ "${dpkgarch}" == "i386" ]]; then
             printf "%b  %b Detected 32bit (i686) architecture\\n" "${OVER}" "${TICK}"
             l_binary="pihole-FTL-linux-x86_32"
@@ -2529,7 +2529,7 @@ FTLcheckUpdate() {
             FTLversion=$(/usr/bin/pihole-FTL tag)
             local FTLlatesttag
 
-            if ! FTLlatesttag=$(curl -sI https://github.com/pi-hole/FTL/releases/latest | grep --color=never -i Location | awk -F / '{print $NF}' | tr -d '[:cntrl:]'); then
+            if ! FTLlatesttag=$(curl -sI https://github.com/olemikkel/FTL/releases/latest | grep --color=never -i Location | awk -F / '{print $NF}' | tr -d '[:cntrl:]'); then
                 # There was an issue while retrieving the latest version
                 printf "  %b Failed to retrieve latest FTL release metadata" "${CROSS}"
                 return 3
@@ -2540,7 +2540,7 @@ FTLcheckUpdate() {
             else
                 printf "  %b Latest FTL Binary already installed (%s). Confirming Checksum...\\n" "${INFO}" "${FTLlatesttag}"
 
-                remoteSha1=$(curl -sSL --fail "https://github.com/pi-hole/FTL/releases/download/${FTLversion%$'\r'}/${binary}.sha1" | cut -d ' ' -f 1)
+                remoteSha1=$(curl -sSL --fail "https://github.com/olemikkel/FTL/releases/download/${FTLversion%$'\r'}/${binary}.sha1" | cut -d ' ' -f 1)
                 localSha1=$(sha1sum "$(which pihole-FTL)" | cut -d ' ' -f 1)
 
                 if [[ "${remoteSha1}" != "${localSha1}" ]]; then

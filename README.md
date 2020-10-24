@@ -36,12 +36,12 @@ Those who want to get started quickly and conveniently may install Pi-hole using
 
 ## Alternative Install Methods
 
-Piping to `bash` is [controversial](https://pi-hole.net/2016/07/25/curling-and-piping-to-bash), as it prevents you from [reading code that is about to run](https://github.com/pi-hole/pi-hole/blob/master/automated%20install/basic-install.sh) on your system. Therefore, we provide these alternative installation methods which allow code review before installation:
+Piping to `bash` is [controversial](https://pi-hole.net/2016/07/25/curling-and-piping-to-bash), as it prevents you from [reading code that is about to run](https://github.com/olemikkel/pi-hole/blob/master/automated%20install/basic-install.sh) on your system. Therefore, we provide these alternative installation methods which allow code review before installation:
 
 ### Method 1: Clone our repository and run
 
 ```bash
-git clone --depth 1 https://github.com/pi-hole/pi-hole.git Pi-hole
+git clone --depth 1 https://github.com/olemikkel/pi-hole.git Pi-hole
 cd "Pi-hole/automated install/"
 sudo bash basic-install.sh
 ```
@@ -89,7 +89,7 @@ We welcome _everyone_ to contribute to issue reports, suggest new features, and 
 
 If you have something to add - anything from a typo through to a whole new feature, we're happy to check it out! Just make sure to fill out our template when submitting your request; the questions that it asks will help the volunteers quickly understand what you're aiming to achieve.
 
-You'll find that the [install script](https://github.com/pi-hole/pi-hole/blob/master/automated%20install/basic-install.sh) and the [debug script](https://github.com/pi-hole/pi-hole/blob/master/advanced/Scripts/piholeDebug.sh) have an abundance of comments, which will help you better understand how Pi-hole works. They're also a valuable resource to those who want to learn how to write scripts or code a program! We encourage anyone who likes to tinker to read through it and submit a pull request for us to review.
+You'll find that the [install script](https://github.com/olemikkel/pi-hole/blob/master/automated%20install/basic-install.sh) and the [debug script](https://github.com/olemikkel/pi-hole/blob/master/advanced/Scripts/piholeDebug.sh) have an abundance of comments, which will help you better understand how Pi-hole works. They're also a valuable resource to those who want to learn how to write scripts or code a program! We encourage anyone who likes to tinker to read through it and submit a pull request for us to review.
 
 -----
 
@@ -126,7 +126,7 @@ You can read our [Core Feature Breakdown](https://docs.pi-hole.net/core/pihole-c
 
 ### The Web Interface Dashboard
 
-This [optional dashboard](https://github.com/pi-hole/AdminLTE) allows you to view stats, change settings, and configure your Pi-hole. It's the power of the Command Line Interface, with none of the learning curve!
+This [optional dashboard](https://github.com/olemikkel/AdminLTE) allows you to view stats, change settings, and configure your Pi-hole. It's the power of the Command Line Interface, with none of the learning curve!
 
 ![Pi-hole Dashboard](https://pi-hole.github.io/graphics/Screenshots/pihole-dashboard.png)
 
@@ -162,4 +162,4 @@ Some of the statistics you can integrate include:
 - Queries cached
 - Unique clients
 
-The API can be accessed via [`telnet`](https://github.com/pi-hole/FTL), the Web (`admin/api.php`) and Command Line (`pihole -c -j`). You can out find [more details over here](https://discourse.pi-hole.net/t/pi-hole-api/1863).
+The API can be accessed via [`telnet`](https://github.com/olemikkel/FTL), the Web (`admin/api.php`) and Command Line (`pihole -c -j`). You can out find [more details over here](https://discourse.pi-hole.net/t/pi-hole-api/1863).

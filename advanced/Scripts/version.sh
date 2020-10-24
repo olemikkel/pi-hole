@@ -69,7 +69,7 @@ getRemoteHash(){
     local daemon="${1}"
     local branch="${2}"
 
-    hash=$(git ls-remote --heads "https://github.com/pi-hole/${daemon}" | \
+    hash=$(git ls-remote --heads "https://github.com/olemikkel/${daemon}" | \
         awk -v bra="$branch" '$0~bra {print substr($0,0,8);exit}')
     if [[ -n "$hash" ]]; then
         echo "$hash"
